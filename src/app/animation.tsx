@@ -1,5 +1,9 @@
 "use client";
 
+
+/* eslint-disable  @typescript-eslint/no-explicit-any */
+/* eslint-disable @typescript-eslint/no-unsafe-member-access */
+
 import { type FC, useEffect, useState } from "react";
 
 export const Animation: FC = () => {
@@ -45,32 +49,26 @@ export const Animation: FC = () => {
       } else {
         setCount(0);
       }
-      families.forEach((_) => {
+      families.forEach(() => {
         const index = Math.floor(Math.random() * families.length);
-        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         (textElements[0] as any).style.fontFamily = families[index]?.font;
         if(textElements[0]?.tagName === 'H1'){
-          // eslint-disable-next-line  @typescript-eslint/no-explicit-any
           (textElements[0] as any).style.letterSpacing = families[index]?.spacing;
         }
         if(textElements[0]?.className.includes('animate')){
-          // eslint-disable-next-line  @typescript-eslint/no-explicit-any
           (textElements[0] as any).style.letterSpacing = families[index]?.spacingSmall;
         }
       });
       borderElements.forEach(element => {
         const index = Math.floor(Math.random() * borderImages.length);
-        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         (element as any).style.setProperty('--background-image', `url(${borderImages[index]})`)
       })
       if(overlay){
         const index = Math.floor(Math.random() * overlays.length);
-        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         (overlay as any).style.background = overlays[index];
       }
       if(backgroundImage){
         const bIndex = Math.floor(Math.random() * translations.length);
-        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         (backgroundImage as any).style.transform = translations[bIndex];
       }
     }, FLICKER);
