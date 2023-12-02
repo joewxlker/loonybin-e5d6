@@ -1,6 +1,6 @@
 "use client";
 
-import { type FC, type ReactNode, useEffect, useState } from "react";
+import { type FC, useEffect, useState } from "react";
 
 export const Animation: FC = () => {
 
@@ -39,41 +39,42 @@ export const Animation: FC = () => {
     ]
     
     const borderElements = [...document.getElementsByClassName('border')];
-    // Set the value of the --my-color variable for each text element
-    const fontInterval = window.setInterval(() => {
-
-    }, 200);
     const flicker = window.setInterval(() => {
       if(count < families.length - 1){
         setCount(prev => prev + 1);
       } else {
         setCount(0);
       }
-      families.forEach((_, i) => {
+      families.forEach((_) => {
         const index = Math.floor(Math.random() * families.length);
+        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         (textElements[0] as any).style.fontFamily = families[index]?.font;
         if(textElements[0]?.tagName === 'H1'){
+          // eslint-disable-next-line  @typescript-eslint/no-explicit-any
           (textElements[0] as any).style.letterSpacing = families[index]?.spacing;
         }
         if(textElements[0]?.className.includes('animate')){
+          // eslint-disable-next-line  @typescript-eslint/no-explicit-any
           (textElements[0] as any).style.letterSpacing = families[index]?.spacingSmall;
         }
       });
       borderElements.forEach(element => {
         const index = Math.floor(Math.random() * borderImages.length);
+        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         (element as any).style.setProperty('--background-image', `url(${borderImages[index]})`)
       })
       if(overlay){
         const index = Math.floor(Math.random() * overlays.length);
+        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         (overlay as any).style.background = overlays[index];
       }
       if(backgroundImage){
         const bIndex = Math.floor(Math.random() * translations.length);
+        // eslint-disable-next-line  @typescript-eslint/no-explicit-any
         (backgroundImage as any).style.transform = translations[bIndex];
       }
     }, FLICKER);
     return () => {
-      window.clearInterval(fontInterval);
       window.clearInterval(flicker);
     };
   }, [count, setCount]);
