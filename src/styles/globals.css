@@ -1,0 +1,48 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html {
+    scroll-behavior: smooth !important;
+}
+
+#gradient{
+    background-attachment: fixed;
+    border: solid black;
+    background-image: radial-gradient(transparent, #000);
+
+}
+
+#background-image{
+    background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('/scribble.png');
+    background-color: white;
+    background-blend-mode: luminosity;
+    background-size: 100% auto;
+    background-attachment: fixed;
+}
+
+body{
+    position: relative;
+}
+
+p, h1, h2, h3, h4, h5, h6, #animate {
+    font-family: diediedie;
+    line-height: 20px;
+    color: #202020 !important;
+}
+
+.border {
+    padding-bottom: 40px;
+    position: relative;
+    border: none !important;
+}
+
+.border::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-repeat: none;
+    background-size: 100% 100%;
+    background-image: var(--background-image);
+    opacity: 80%;
+}
