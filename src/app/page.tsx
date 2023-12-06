@@ -15,7 +15,7 @@ import { Animation } from "./animation";
 import Image from "next/image";
 import { useEffect, useState } from "react";
 import { useRouter } from "next/navigation";
-
+import Link from "next/link";
 
 export default function HomePage() {
   const projectData = config as ProjectInfo;
@@ -37,12 +37,29 @@ export default function HomePage() {
 
   return (
       <main
-        className={`relative flex min-h-screen flex-col items-center justify-center gap-5 text-black ${layout}`}
+        className={`relative text-black`}
       >
-        <div className={`${loading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500`}>
-          <div id="landing" className="xl:py-40 lg:py-40 xl:pb-0 lg:pb-0 pb-40 relative xl:px-20 lg:px-5 md:px-5 px-2 max-w-[2000px] w-screen">
-            <h1 className="text-6xl font-heading text-t1 p-5">WELCOME TO THE LOONY BIN</h1>
-            <p className="text-xl font-body text-t2 p-5">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+        <div className={`${loading ? 'opacity-0' : 'opacity-100'} transition-opacity duration-500 flex min-h-screen flex-col items-center justify-center gap-5 ${layout}`}>
+          <div id="landing" className="xl:py-40 lg:py-40 xl:pb-0 lg:pb-0 pb-40 relative xl:px-20 gap-12 flex flex-col lg:px-5 md:px-5 xl:max-w-[2000px] overflow-clip lg:max-w-[2000px] max-w-[100vw] xl:w-screen lg:w-screen">
+            <h1 className="xl:text-6xl lg:text-6xl text-5xl font-heading text-t1 p-5 xl:py-0 lg:py-0 py-20">WELCOME TO THE LOONY BIN</h1>
+            <p className="text-xl font-body text-t2 xl:p-5 lg:p-5">AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA</p>
+            <div className="flex flex-row xl:justify-between lg:justify-between xl:p-5 lg:p-5 justify-evenly xl:w-1/2 lg:w-1/2 w-full">
+              <Link target="_blank" href={projectData.uniswap} >
+                <Image alt='' src="/icons/uniswap.svg" height={30} width={30}/>
+              </Link>
+              <Link target="_blank" href={projectData.dextools} >
+                <Image alt='' src="/icons/dextools.svg" height={30} width={30}/>
+              </Link>
+              <Link target="_blank" href={projectData.telegram} >
+                <Image alt='' src="/icons/telegram.svg" height={30} width={30}/>
+              </Link>
+              <Link target="_blank" href={projectData.twitter} >
+                <Image alt='' src="/icons/twitter.svg" height={30} width={30}/>
+              </Link>
+              <Link target="_blank" href={projectData.etherscan} >
+                <Image alt='' src="/icons/etherscan.svg" height={30} width={30}/>
+              </Link>
+            </div>
             <p className="absolute bottom-0 xl:right-20 lg:right-20 right-0 -rotate-45 text-xl font-body text-t2 p-5">PSCHLOPSCHLOP<br/>PSCHLOPSCHLOP<br/>PSCHLOPSCHLOP<br/></p>
             <div className="flex items-center justify-center">
               <Image src='/logo-nobg-512px.png' alt='' height={300} width={300} />

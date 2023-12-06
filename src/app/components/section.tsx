@@ -43,7 +43,7 @@ const Article: FC<{
     <div className="flex flex-col">
       {body.map(item => {
           return (
-            <article key={uuid4()} className="flex w-[500px] max-w-[100vw] flex-col px-5 py-2 font-body">
+            <article key={uuid4()} className="flex xl:w-[500px] lg:w-[500px] max-w-[100vw] flex-col px-5 py-2 font-body">
               <p className={`font-body text-2xl text-t1 w-full ${direction === 'left' ? 'text-left' : 'text-right' }`}>
                 {item}
               </p>

@@ -28,7 +28,7 @@ export default function RootLayout({
           </LoaderContext>
           <div id="overlay" className="fixed inset-0 -z-10"/>
           <div id="gradient" className="fixed inset-0 -z-20"/>
-          <div id="background-image" className="fixed inset-0 -z-30" />
+          <div id="background-image" className="absolute inset-0 -z-30" />
           <Animation/>
         </body>
     </html>
