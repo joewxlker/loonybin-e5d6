@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { type FC, type ReactNode } from "react";
 import uuid4 from "uuid4";
 
@@ -34,18 +35,21 @@ const Body: FC<{ children: ReactNode }> = ({ children }) => {
 
 const Article: FC<{
   body: string[];
-  link?: { title: string; href: string };
+  link?: { title: string; callback: () => void };
   title?: string;
   direction: 'left' | 'right';
-}> = ({ body, direction }) => {
+}> = ({ body, direction, link }) => {
   return (
     <div className="flex flex-col">
       {body.map(item => {
           return (
-            <article key={uuid4()} className="flex w-[500px] max-w-[100vw] flex-auto px-5 py-2 font-body">
+            <article key={uuid4()} className="flex w-[500px] max-w-[100vw] flex-col px-5 py-2 font-body">
               <p className={`font-body text-2xl text-t1 w-full ${direction === 'left' ? 'text-left' : 'text-right' }`}>
                 {item}
               </p>
+              {link && <button className="border flex justify-center py-6" onClick={link.callback} >
+                <p className="font-body text-2xl text-t1 w-full">[link to whitepaper]</p>
+              </button>}
             </article>
             )
         })}

@@ -49,16 +49,19 @@ export const Animation: FC = () => {
       } else {
         setCount(0);
       }
-      families.forEach(() => {
-        const index = Math.floor(Math.random() * families.length);
-        (textElements[0] as any).style.fontFamily = families[index]?.font;
-        if(textElements[0]?.tagName === 'H1'){
-          (textElements[0] as any).style.letterSpacing = families[index]?.spacing;
-        }
-        if(textElements[0]?.className.includes('animate')){
-          (textElements[0] as any).style.letterSpacing = families[index]?.spacingSmall;
-        }
-      });
+      const textElement = textElements[0];
+      if(textElement){
+        families.forEach(() => {
+          const index = Math.floor(Math.random() * families.length);
+          (textElement as any).style.fontFamily = families[index]?.font;
+          if(textElement?.tagName === 'H1'){
+            (textElement as any).style.letterSpacing = families[index]?.spacing;
+          }
+          if(textElement?.className.includes('animate')){
+            (textElement as any).style.letterSpacing = families[index]?.spacingSmall;
+          }
+        });
+      }
       borderElements.forEach(element => {
         const index = Math.floor(Math.random() * borderImages.length);
         (element as any).style.setProperty('--background-image', `url(${borderImages[index]})`)

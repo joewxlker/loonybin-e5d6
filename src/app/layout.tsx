@@ -1,9 +1,10 @@
 import "~/styles/globals.css";
 
 import { type Metadata } from "next";
-import { Animation } from "./animation"
 
 import config from "public/config.json";
+import { LoaderContext } from "./loader";
+import { Animation } from "./animation";
 
 export const metadata: Metadata = config.meta;
 
@@ -22,7 +23,13 @@ export default function RootLayout({
         <link href="https://fonts.cdnfonts.com/css/jowrotealovesong" rel="stylesheet"/>
       </head>
         <body>
+          <LoaderContext>
             {children}
+          </LoaderContext>
+          <div id="overlay" className="fixed inset-0 -z-10"/>
+          <div id="gradient" className="fixed inset-0 -z-20"/>
+          <div id="background-image" className="fixed inset-0 -z-30" />
+          <Animation/>
         </body>
     </html>
   );
